@@ -1,5 +1,5 @@
 .index.wrapper {
-  background: url('../../assets/images/coolglobe.png') center no-repeat;
+  background: url('../../assets/images/image_background.png') center no-repeat;
   background-size: cover;
   min-height: 100%;
   height: auto;
@@ -26,6 +26,7 @@
 }
 
 .login-wrapper {
+  background-color: white;
   color: rgba(216, 216, 216, 0.945);
   width: 284px;
   font-size: 14px;
