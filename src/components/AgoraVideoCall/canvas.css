@@ -44,7 +44,7 @@
 
 .ag-btn-group:hover,
 .ag-btn-group.active {
-  background: rgba(18, 74, 99, .8);
+  background: rgba(18, 99, 79, 0.8);
 }
 
 .ag-btn {
@@ -61,7 +61,7 @@
 }
 
 .ag-btn:hover {
-  color: #00B6ED;
+  color: rgb(237, 0, 0);
 }
 
 .ag-btn.disabled,

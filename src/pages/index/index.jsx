@@ -59,9 +59,9 @@ class Index extends React.Component {
         <div className="ag-main">
           <section className="login-wrapper">
             <div className="login-header">
-              <img src={require('../../assets/images/ag-logo.png')} alt="" />
-              <p className="login-title">AgoraWeb v2.1</p>
-              <p className="login-subtitle">Powering Real-Time Communications</p>
+              {/* <img src={require('../../assets/images/ag-logo.png')} alt="" /> */}
+              <p className="login-title">Welcome To Atlas</p>
+              <p className="login-subtitle">How Would You Like To Learn Today?</p>
             </div>
             <div className="login-body">
               <div className="columns">
@@ -132,11 +132,11 @@ class Index extends React.Component {
         </div>
         <div className="ag-footer">
           <a className="ag-href" href="https://www.agora.io">
-            <span>Powered By Agora</span>
+            
           </a>
           <div>
-            <span>Interested in Agora video call SDK? Contact </span>
-            <span className="ag-contact">sales@agora.io</span>
+            <span> </span>
+            <span className="ag-contact"></span>
           </div>
         </div>
       </div>
@@ -237,19 +237,19 @@ class BaseOptions extends React.Component {
     super(props)
     this._options = [
       {
-        label: 'Agora Video Call',
+        label: 'Tutoring Session',
         value: 'avc',
         content: 'One to one and group calls'
       },
       {
-        label: 'Agora Live',
+        label: 'Classroom',
         value: 'al',
-        content: 'Enabling real-time interactions between the host and the audience'
+        content: 'Classroom setting with teacher and student-specific features'
       }
     ]
     this.state = {
       active: false,
-      message: 'Agora Video Call',
+      message: 'Type of Session',
 
     }
   }
