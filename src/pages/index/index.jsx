@@ -65,7 +65,7 @@ class Index extends React.Component {
             </div>
             <div className="login-body">
               <div className="columns">
-                <div className="column is-12">
+                <div className="column">
                   <InputChannel onChange={this.handleChannel} placeholder="Input a room name here"></InputChannel>
                 </div>
               </div>
