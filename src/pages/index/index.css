@@ -26,10 +26,13 @@
 }
 
 .login-wrapper {
-  background-color: white;
+  background-color: black;
+  opacity: 90%;
   color: rgba(216, 216, 216, 0.945);
-  width: 284px;
+  width: 300px;
   font-size: 14px;
+  border-radius: 25px;
+  padding: 10px;
 }
 
 .login-header,
@@ -57,6 +60,7 @@
 
 .channel-wrapper {
   padding-bottom: 30px;
+  width: 90%;
 }
 
 .channel-wrapper>span {
