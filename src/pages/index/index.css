@@ -1,12 +1,14 @@
 .index.wrapper {
-  background: url('../../assets/images/image_background.png') center no-repeat;
-  background-size: cover;
-  min-height: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
+	background: url("../../assets/images/image_background.png") center no-repeat;
+	background-color: black;
+	background-size: 667px;
+	min-height: 100%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column;
+	padding-top: 12px;
 }
 
 .index .ag-footer {
@@ -26,13 +28,16 @@
 }
 
 .login-wrapper {
-  background-color: black;
-  opacity: 90%;
-  color: rgba(216, 216, 216, 0.945);
-  width: 300px;
-  font-size: 14px;
-  border-radius: 25px;
-  padding: 10px;
+
+    background-color: black;
+    opacity: 93%;
+    color: rgba(216, 216, 216, 0.945);
+    width: 300px;
+    font-size: 14px;
+    padding: 10px;
+    border: 1.5px solid grey;
+    border-radius: 20px;
+  
 }
 
 .login-header,
@@ -60,7 +65,6 @@
 
 .channel-wrapper {
   padding-bottom: 30px;
-  width: 90%;
 }
 
 .channel-wrapper>span {

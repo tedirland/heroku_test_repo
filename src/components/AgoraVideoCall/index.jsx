@@ -25,10 +25,12 @@ class AgoraCanvas extends React.Component {
     super(props)
     this.client = {}
     this.localStream = {}
+    this.screenStream = {}
     this.shareClient = {}
     this.shareStream = {}
     this.state = {
       displayMode: 'pip',
+      //what does pip mean?
       streamList: [],
       readyState: false
     }
@@ -62,6 +64,32 @@ class AgoraCanvas extends React.Component {
           })
       })
     })
+    this.screenclient = AgoraRTC.createClient({ mode: $.transcode })
+    this.screenclient.init($.appId, () => {
+      console.log("AgoraRTC screenshare client initialized")
+      this.subscribeStreamEvents()
+      this.screenclient.join($.appId, $.channel, $.uid, (uid) => {
+        console.log("ScreenShare Stream " + uid + " join channel successfully")
+        console.log('At ' + new Date().toLocaleTimeString())
+        // create local stream
+        // It is not recommended to setState in function addStream
+        this.screenStream = this.streamInit(uid, $.attendeeMode, $.videoProfile)
+        this.screenStream.init(() => {
+          if ($.attendeeMode !== 'audience') {
+            this.addStream(this.screenStream, true)
+            this.client.publish(this.screenStream, err => {
+              console.log("Publish screen stream error: " + err);
+            })
+          }
+          this.setState({ readyState: true })
+        },
+          err => {
+            console.log("getUserMedia failed", err)
+            this.setState({ readyState: true })
+          })
+      })
+    })
+
   }
 
   componentDidMount() {
@@ -137,7 +165,7 @@ class AgoraCanvas extends React.Component {
 
       })
     }
-    // screen share mode (tbd)
+    // this is where we will render our screenshare stream
     else if (this.state.displayMode === 'share') {
 
     }
