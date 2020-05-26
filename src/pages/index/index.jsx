@@ -49,7 +49,12 @@ class Index extends React.Component {
     Cookies.set('transcode', this.state.transcode)
     Cookies.set('attendeeMode', this.state.attendeeMode)
     Cookies.set('videoProfile', this.state.videoProfile)
-    window.location.hash = "meeting"
+    if(this.state.baseMode === 'avc') {
+      window.location.hash = "classroom"
+    }
+    else {
+      window.location.hash = "tutoring"
+    }
   }
 
   render() {
@@ -237,15 +242,16 @@ class BaseOptions extends React.Component {
     super(props)
     this._options = [
       {
-        label: 'Tutoring Session',
+        label: 'Classroom',
         value: 'avc',
-        content: 'One to one and group calls'
+        content: 'Classroom setting with teacher and student-specific features'
       },
       {
-        label: 'Classroom',
+        label: 'Tutoring Session',
         value: 'al',
-        content: 'Classroom setting with teacher and student-specific features'
+        content: 'One to one and group calls'
       }
+
     ]
     this.state = {
       active: false,
