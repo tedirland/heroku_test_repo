@@ -176,7 +176,8 @@ class AgoraCanvas extends React.Component {
       case 'screenshare':
         defaultConfig.video = false
         defaultConfig.screen = true
-        defaultConfig.screenaudio = true;
+        defaultConfig.screenaudio = true
+        defaultConfig.audio = false
         break;
       default:
       case 'video':
