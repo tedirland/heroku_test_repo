@@ -64,7 +64,7 @@ class AgoraCanvas extends React.Component {
           })
       })
     })
-    
+
 
   }
 
@@ -147,7 +147,7 @@ class AgoraCanvas extends React.Component {
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.client && this.client.unpublish(this.localStream)
     this.localStream && this.localStream.close()
     this.client && this.client.leave(() => {
@@ -187,7 +187,7 @@ class AgoraCanvas extends React.Component {
     stream.setVideoProfile(videoProfile)
     return stream
   }
-  
+
 
   subscribeStreamEvents = () => {
     let rt = this
@@ -333,6 +333,37 @@ class AgoraCanvas extends React.Component {
       window.location.hash = ''
     }
   }
+  shareScreen = (e) => {
+
+    let $ = this.props
+    // init AgoraRTC screenshare client
+    this.client = AgoraRTC.createClient({ mode: $.transcode })
+    this.client.init($.appId, () => {
+      console.log("AgoraRTC screenshareclient initialized")
+      this.subscribeStreamEvents()
+      this.client.join($.appId, $.channel, $.uid, (uid) => {
+        console.log("User " + uid + " join channel successfully")
+        console.log('At ' + new Date().toLocaleTimeString())
+        // create local stream
+        // It is not recommended to setState in function addStream
+        this.screenStream = this.streamInit(uid, "screenshare", $.videoProfile)
+        this.screenStream.init(() => {
+          if ($.attendeeMode !== 'audience') {
+            this.addStream(this.screenStream, true)
+            this.client.publish(this.screenStream, err => {
+              console.log("Publish screen stream error: " + err);
+            })
+          }
+          this.setState({ readyState: true })
+        },
+          err => {
+            console.log("getUserMedia failed", err)
+            this.setState({ readyState: true })
+          })
+      })
+    })
+ 
+  }
 
   render() {
     const style = {
@@ -385,6 +416,15 @@ class AgoraCanvas extends React.Component {
         <i className="ag-icon ag-icon-leave"></i>
       </span>
     )
+    const screenshareBtn = (
+      <span
+        onClick={this.shareScreen}
+        className={this.state.readyState ? 'ag-btn exitBtn' : 'ag-btn exitBtn disabled'}
+        title="Share Screen">
+        <i className="ag-icon ag-icon-screen-share"></i>
+      </span>
+    )
+
 
     return (
       <div id="ag-canvas" style={style}>
@@ -392,9 +432,7 @@ class AgoraCanvas extends React.Component {
           {exitBtn}
           {videoControlBtn}
           {audioControlBtn}
-          {/* <span className="ag-btn shareScreenBtn" title="Share Screen">
-                        <i className="ag-icon ag-icon-screen-share"></i>
-                    </span> */}
+          {screenshareBtn}
           {switchDisplayBtn}
           {hideRemoteBtn}
         </div>
