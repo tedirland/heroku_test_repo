@@ -4,7 +4,8 @@ import 'bulma/css/bulma.css'
 
 import './App.css'
 import Index from './index'
-import Meeting from './meeting'
+import Classroom from './classroom'
+import Tutoring from './tutoring'
 
 class App extends Component {
   render() {
@@ -12,7 +13,8 @@ class App extends Component {
       <Router>
         <div className="full">
           <Route exact path="/" component={Index} />
-          <Route path="/meeting" component={Meeting} />
+          <Route path="/classroom" component={Classroom} />
+          <Route path="/tutoring" component={Tutoring} />
         </div>
       </Router>
     )
