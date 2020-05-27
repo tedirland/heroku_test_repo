@@ -37,6 +37,7 @@ class Index extends React.Component {
 		});
 	};
 
+<<<<<<< HEAD
 	handleJoin = () => {
 		if (!this.state.joinBtn) {
 			return;
@@ -49,6 +50,25 @@ class Index extends React.Component {
 		Cookies.set("videoProfile", this.state.videoProfile);
 		window.location.hash = "meeting";
 	};
+=======
+  handleJoin = () => {
+    if (!this.state.joinBtn) {
+      return
+    }
+    console.log(this.state)
+    Cookies.set('channel', this.state.channel)
+    Cookies.set('baseMode', this.state.baseMode)
+    Cookies.set('transcode', this.state.transcode)
+    Cookies.set('attendeeMode', this.state.attendeeMode)
+    Cookies.set('videoProfile', this.state.videoProfile)
+    if(this.state.baseMode === 'avc') {
+      window.location.hash = "classroom"
+    }
+    else {
+      window.location.hash = "tutoring"
+    }
+  }
+>>>>>>> a4ae8d78755335036bc493929bfbf55ca197a601
 
 	render() {
 		return (
@@ -259,6 +279,7 @@ class InputChannel extends React.Component {
 }
 
 class BaseOptions extends React.Component {
+<<<<<<< HEAD
 	constructor(props) {
 		super(props);
 		this._options = [
@@ -278,6 +299,29 @@ class BaseOptions extends React.Component {
 			message: "Type of Session",
 		};
 	}
+=======
+  constructor(props) {
+    super(props)
+    this._options = [
+      {
+        label: 'Classroom',
+        value: 'avc',
+        content: 'Classroom setting with teacher and student-specific features'
+      },
+      {
+        label: 'Tutoring Session',
+        value: 'al',
+        content: 'One to one and group calls'
+      }
+
+    ]
+    this.state = {
+      active: false,
+      message: 'Type of Session',
+
+    }
+  }
+>>>>>>> a4ae8d78755335036bc493929bfbf55ca197a601
 
 	handleSelect = (item) => {
 		let msg = item.label;
