@@ -6,7 +6,7 @@ import './canvas.css'
 import '../../assets/fonts/css/icons.css'
 
 const tile_canvas = {
-  '1': ['span 12/span 24'],
+  '1': ['span 12/span 12/13/13'],
   '2': ['span 12/span 12/13/25', 'span 12/span 12/13/13'],
   '3': ['span 6/span 12', 'span 6/span 12', 'span 6/span 12/7/19'],
   '4': ['span 6/span 12', 'span 6/span 12', 'span 6/span 12', 'span 6/span 12/7/13'],
@@ -97,7 +97,7 @@ class AgoraCanvas extends React.Component {
     // pip mode (can only use when less than 4 people in channel)
     if (this.state.displayMode === 'pip') {
       let no = this.state.streamList.length
-      if (no > 4 || sliced === "tut") {
+      if (no > 17 || sliced === "tut") {
         this.setState({ displayMode: 'tile' })
         return
       }
@@ -115,9 +115,21 @@ class AgoraCanvas extends React.Component {
           // (total # of rows, total # of columns, last two mess up the grid somehow need more research)
           dom.setAttribute('style', `grid-area: span 12/span 12/13/12`)
         }
-        else {
-          dom.setAttribute('style', `grid-area: span 3/span 4/${4 + 3 * index}/25;
+        else if(index > 13 && index < 18) {
+          dom.setAttribute('style', `grid-area: span 3/span 3/${4 + 3 * (index-12)}/24;
                     z-index:1;width:calc(100% - 20px);height:calc(100% - 20px)`)
+        }
+        else if(index > 8 && index < 13) {
+          dom.setAttribute('style', `grid-area: span 3/span 3/${4 + 3 * (index-8)}/21;
+                    z-index:1;width:calc(100% - 20px);height:calc(100% - 20px)`)
+        }
+        else if(index > 3 && index < 8) {
+          dom.setAttribute('style', `grid-area: span 3/span 3/${4 + 3 * (index-4)}/18;
+                    z-index:1;width:calc(100% - 20px);height:calc(100% - 20px)`)
+        }
+        else {
+          dom.setAttribute('style', `grid-area: span 3/span 3/${4 + 3 * index}/15;
+          z-index:1;width:calc(100% - 20px);height:calc(100% - 20px)`)
         }
         item.player.resize && item.player.resize()
 
