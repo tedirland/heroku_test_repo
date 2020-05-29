@@ -115,11 +115,11 @@ class AgoraCanvas extends React.Component {
           // (total # of rows, total # of columns, last two mess up the grid somehow need more research)
           dom.setAttribute('style', `grid-area: span 12/span 12/13/12`)
         }
-        else if(index > 13 && index < 18) {
+        else if(index > 11 && index < 16) {
           dom.setAttribute('style', `grid-area: span 3/span 3/${4 + 3 * (index-12)}/24;
                     z-index:1;width:calc(100% - 20px);height:calc(100% - 20px)`)
         }
-        else if(index > 8 && index < 13) {
+        else if(index > 7 && index < 12) {
           dom.setAttribute('style', `grid-area: span 3/span 3/${4 + 3 * (index-8)}/21;
                     z-index:1;width:calc(100% - 20px);height:calc(100% - 20px)`)
         }
